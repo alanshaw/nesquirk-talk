@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { createContainer } from 'nesquirk'
+import { createContainer, withClient } from 'nesquirk'
 import Todos from './domain/Todos'
 
 class TodoList extends Component {
@@ -96,14 +96,14 @@ class TodoListContainer extends Component {
   render () {
     const { todos, loading } = this.props
     const { onDone, onRemove } = this
-    return <TodoList todos={todos} onDone={onDone} onRemove={onRemove} laoding={loading} />
+    return <TodoList todos={todos} onDone={onDone} onRemove={onRemove} loading={loading} />
   }
 }
 
-export default createContainer(function (props, subs) {
+export default withClient(createContainer(function (props) {
   const handle = this.subscribe('/todos', Todos)
   return {
     todos: Todos.find({}).sort({ createdAt: -1 }).all(),
     loading: !handle.ready()
   }
-}, TodoListContainer)
+}, TodoListContainer))
