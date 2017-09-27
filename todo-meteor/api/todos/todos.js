@@ -1,6 +1,6 @@
 import { Mongo } from 'meteor/mongo'
 
-const Todos = new Mongo.Collection('campaigns')
+const Todos = new Mongo.Collection('todos')
 
 Todos.allow({
   insert: () => false,
