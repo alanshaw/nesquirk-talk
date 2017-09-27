@@ -28,11 +28,7 @@ server.register([Inert], (err) => {
     method: 'GET',
     path: '/todo/{todoId}',
     handler (request, reply) {
-      db.todos.findOne(
-        { _id: ObjectId(request.params.todoId) },
-        { _id: 1, title: 1, createdAt: 1, done: 1 },
-        reply
-      )
+      db.todos.findOne({ _id: ObjectId(request.params.todoId) }, reply)
     }
   })
 
