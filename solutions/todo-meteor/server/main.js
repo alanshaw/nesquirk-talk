@@ -1,1 +1,1 @@
-import '../startup/server'
+import '../imports/startup/server'
