@@ -30,6 +30,7 @@ add:
 
 ```js
 'todos.remove' (payload) {
+  // ! Copy from todo-fetch and alter for meteor
   Todos.remove({ _id: payload.todoId })
 }
 ```
@@ -43,6 +44,11 @@ import { Meteor } from 'meteor/meteor'
 import { createContainer } from 'meteor/react-meteor-data'
 import Todos from '../api/todos/todos'
 ```
+
+!!! Instead of fetching todos from our REST endpoint, we're going to subscribe to our todos publication
+
+!!! createContainer takes a function which should return your data
+!!! these are passed as props to the component being contained
 
 replace:
 
